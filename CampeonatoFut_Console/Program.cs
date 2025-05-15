@@ -9,9 +9,9 @@ internal class Program
 
         while (!exit)
         {
-            Console.WriteLine("\n\n###############################################");
+            Console.WriteLine("\n\n##############################################");
             Console.WriteLine("Você chegou no CampeonatoFut!");
-            Console.WriteLine("###############################################\n");
+            Console.WriteLine("##############################################\n");
             Console.WriteLine("Digite 1 para registrar um Time de Futebol");
             Console.WriteLine("Digite 2 para registrar um Jogador de um Time de Futebol");
             Console.WriteLine("Digite 3 para mostrar todos os Times de Futebol");

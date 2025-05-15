@@ -6,7 +6,9 @@ Repositório utilizado para guardar arquivos dos exercícios práticos, referent
 
   Os arquivos referentes ao Exercício 1, parte integrante da avaliação da disciplina DM106 estão nesta branch 'exercicio1'.
 
-  A atividade proposta neste exercício é a definição do diagrama de classes e a criação do programa console do projeto. 
+  A atividade proposta neste exercício é a definição do diagrama de classes e a criação do programa console do projeto.
+
+  ![Diagrama de Classes](https://github.com/tandreycruz/PG_Inatel_DM106_CampeonatoFut/blob/exercicio1/images/DiagramaClassesCampeonatoFut.jpg)
 
 
 ### Autor:

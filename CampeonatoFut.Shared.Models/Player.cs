@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace CampeonatoFut_Console
 {
-    internal class Player
+    public class Player
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
         public string Position { get; set; }
 
-        public Player(string name, string position)
+        public Player(string name)
         {
             Name = name;
-            Position = position;
+            //Position = position;
         }
         public override string ToString()
         {

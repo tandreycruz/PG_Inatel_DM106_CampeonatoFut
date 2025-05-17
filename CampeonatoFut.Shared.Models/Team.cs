@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace CampeonatoFut_Console
 {
     
-    internal class Team
+    public class Team
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Coach { get; set; }
 
@@ -19,7 +20,7 @@ namespace CampeonatoFut_Console
         }
         public override string ToString()
         {
-            return $@"Time: {Name}";
+            return $@"{Id} - Time: {Name}";
         }
 
         private List<Player> Players = new List<Player>();

@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CampeonatoFut.Shared.Data\CampeonatoFut.Shared.Data.csproj" />
+    <ProjectReference Include="..\CampeonatoFut.Shared.Models\CampeonatoFut.Shared.Models.csproj" />
+  </ItemGroup>
+
 </Project>

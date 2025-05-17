@@ -1,14 +1,19 @@
-﻿using CampeonatoFut_Console;
+﻿using CampeonatoFut.Shared.Data.BD;
+using CampeonatoFut_Console;
 
 internal class Program
 {
     public static Dictionary<string, Team> TeamList = new();
     private static void Main(string[] args)
     {
+        var TeamDAL = new TeamDAL();
+        //var PlayerDAL = new PlayerDAL();
+
         bool exit = false;
 
         while (!exit)
         {
+            Console.Clear();
             Console.WriteLine("\n\n##############################################");
             Console.WriteLine("Você chegou no CampeonatoFut!");
             Console.WriteLine("##############################################\n");
@@ -27,13 +32,13 @@ internal class Program
                     TeamRegistration();
                     break;
                 case 2:
-                    PlayerRegistration();
+                    //PlayerRegistration();
                     break;
                 case 3:
                     TeamGet();
                     break;
                 case 4:
-                    PlayerGet();
+                    //PlayerGet();
                     break;
                 case -1:
                     Console.Clear();
@@ -45,66 +50,69 @@ internal class Program
                     break;
             }
         }
-    }
-    private static void TeamRegistration()
-    {
-        Console.Clear();
-        Console.WriteLine("### Registro de Time de Futebol ###");
-        Console.WriteLine("\nDigite o nome do time que deseja registrar: ");
-        string name = Console.ReadLine();
-        Console.WriteLine("\nDigite o técnico do time que deseja registrar: ");
-        string coach = Console.ReadLine();
-        Team team = new Team(name, coach);
-        TeamList.Add(name, team);
-        Console.WriteLine($"\nO time de futebol {name} foi registrado com sucesso!\n");
-    }
 
-    private static void PlayerRegistration()
-    {
-        Console.Clear();
-        Console.WriteLine("### Registro de Jogadores ###");
-        Console.WriteLine("\nDigite o time cujo jogador deseja registrar: ");
-        string TeamName = Console.ReadLine();
-        if (TeamList.ContainsKey(TeamName))
+        void TeamRegistration()
         {
-            Console.WriteLine($"\nInforme o nome do jogador do {TeamName}: ");
+            Console.Clear();
+            Console.WriteLine("### Registro de Time de Futebol ###");
+            Console.WriteLine("\nDigite o nome do time que deseja registrar: ");
             string name = Console.ReadLine();
-            Console.WriteLine($"\nInforme a posição do jogador do {TeamName}: ");
-            string position = Console.ReadLine();
-            Team team = TeamList[TeamName];
-            team.AddPlayer(new Player(name, position));
-            Console.WriteLine($"\nO jogador {name} do time {TeamName} foi registrado com sucesso!\n");
+            Console.WriteLine("\nDigite o técnico do time que deseja registrar: ");
+            string coach = Console.ReadLine();
+            Team team = new Team(name, coach);            
+            TeamDAL.Create(team);
+            Console.WriteLine($"\nO time de futebol {name} foi registrado com sucesso!\n");
+            Console.ReadKey();
         }
-        else
-        {
-            Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
-        }
-    }
 
-    private static void TeamGet()
-    {
-        Console.Clear();
-        Console.WriteLine("Lista dos Times de Futebol:\n");
-        foreach (var Team in TeamList)
-        {
-            Console.WriteLine(Team);
-        }
-    }
+        //void PlayerRegistration()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine("### Registro de Jogadores ###");
+        //    Console.WriteLine("\nDigite o time cujo jogador deseja registrar: ");
+        //    string TeamName = Console.ReadLine();
+        //    if (TeamList.ContainsKey(TeamName))
+        //    {
+        //        Console.WriteLine($"\nInforme o nome do jogador do {TeamName}: ");
+        //        string name = Console.ReadLine();
+        //        //Console.WriteLine($"\nInforme a posição do jogador do {TeamName}: ");
+        //        //string position = Console.ReadLine();
+        //        Team team = TeamList[TeamName];
+        //        team.AddPlayer(new Player(name));                
+        //        Console.WriteLine($"\nO jogador {name} do time {TeamName} foi registrado com sucesso!\n");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
+        //    }
+        //}
 
-    private static void PlayerGet()
-    {
-        Console.Clear();
-        Console.WriteLine("### Exibir detalhes do Time de Futebol ###");
-        Console.WriteLine("\nDigite o time cujos jogadores deseja consultar: ");
-        string TeamName = Console.ReadLine();
-        if (TeamList.ContainsKey(TeamName))
+        void TeamGet()
         {
-            Team team = TeamList[TeamName];
-            team.ShowPlayers();
+            Console.Clear();
+            Console.WriteLine("Lista dos Times de Futebol:\n");
+            foreach (var Team in TeamDAL.Read())
+            {
+                Console.WriteLine(Team);
+            }
+            Console.ReadKey();
         }
-        else
-        {
-            Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
-        }
+
+        //void PlayerGet()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine("### Exibir detalhes do Time de Futebol ###");
+        //    Console.WriteLine("\nDigite o time cujos jogadores deseja consultar: ");
+        //    string TeamName = Console.ReadLine();
+        //    if (TeamList.ContainsKey(TeamName))
+        //    {
+        //        Team team = TeamList[TeamName];
+        //        team.ShowPlayers();
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
+        //    }
+        //}
     }
 }

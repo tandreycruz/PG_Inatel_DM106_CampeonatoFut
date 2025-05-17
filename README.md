@@ -2,11 +2,18 @@
 ## DM106 - Desenvolvimento de Web Services com Segurança sob a Plataforma .NET
 ### Descrição:
 Repositório utilizado para guardar arquivos dos exercícios práticos, referentes ao projeto CampeonatoFut, produzidos na disciplina Desenvolvimento de Web Services com Segurança sob a Plataforma .NET.
-### 📂 Arquivos:
+### Exercício 2:
 
-- [Exercício 1](https://github.com/tandreycruz/PG_Inatel_DM106_CampeonatoFut/tree/exercicio1)
+  Os arquivos referentes ao Exercício 2, parte integrante da avaliação da disciplina DM106 estão nesta branch 'exercicio2'.
 
-  Os arquivos referentes ao Exercício 1, parte integrante da avaliação da disciplina DM106 estão na branch 'exercicio1'.
+  As atividades propostas neste exercício são:
+  
+    - Integrar com ORM Entity Framework (não precisa refazer os passos ADO.NET)
+    - Criar Classes Context e DAL de Shared.Data
+    - Desenvolver uma DAL genérica
+    - Criar um novo banco com Migrations, alimentando-o com dados
+    - Criar a relação entre as classes (1:N) utilizando Migrations e Proxies
+    - Configurar e testar o método GET da API
 
 
 ### Autor:

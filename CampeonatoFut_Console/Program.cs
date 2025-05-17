@@ -6,7 +6,8 @@ internal class Program
     public static Dictionary<string, Team> TeamList = new();
     private static void Main(string[] args)
     {
-        var TeamDAL = new TeamDAL();
+        //var TeamDAL = new TeamDAL();
+        var TeamDAL = new DAL<Team>();
         //var PlayerDAL = new PlayerDAL();
 
         bool exit = false;
@@ -32,13 +33,13 @@ internal class Program
                     TeamRegistration();
                     break;
                 case 2:
-                    //PlayerRegistration();
+                    PlayerRegistration();
                     break;
                 case 3:
                     TeamGet();
                     break;
                 case 4:
-                    //PlayerGet();
+                    PlayerGet();
                     break;
                 case -1:
                     Console.Clear();
@@ -65,27 +66,27 @@ internal class Program
             Console.ReadKey();
         }
 
-        //void PlayerRegistration()
-        //{
-        //    Console.Clear();
-        //    Console.WriteLine("### Registro de Jogadores ###");
-        //    Console.WriteLine("\nDigite o time cujo jogador deseja registrar: ");
-        //    string TeamName = Console.ReadLine();
-        //    if (TeamList.ContainsKey(TeamName))
-        //    {
-        //        Console.WriteLine($"\nInforme o nome do jogador do {TeamName}: ");
-        //        string name = Console.ReadLine();
-        //        //Console.WriteLine($"\nInforme a posição do jogador do {TeamName}: ");
-        //        //string position = Console.ReadLine();
-        //        Team team = TeamList[TeamName];
-        //        team.AddPlayer(new Player(name));                
-        //        Console.WriteLine($"\nO jogador {name} do time {TeamName} foi registrado com sucesso!\n");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
-        //    }
-        //}
+        void PlayerRegistration()
+        {
+            Console.Clear();
+            Console.WriteLine("### Registro de Jogadores ###");
+            Console.WriteLine("\nDigite o time cujo jogador deseja registrar: ");
+            string teamName = Console.ReadLine();
+            var targetTeam = TeamDAL.ReadBy(a=> a.Name.Equals(teamName));
+            if (targetTeam is not null)
+            {
+                Console.WriteLine($"\nInforme o nome do jogador do {teamName}: ");
+                string name = Console.ReadLine();                
+                targetTeam.AddPlayer(new Player(name));
+                TeamDAL.Update(targetTeam);
+                Console.WriteLine($"\nO jogador {name} do time {teamName} foi registrado com sucesso!\n");
+            }
+            else
+            {
+                Console.WriteLine($"\nO time {teamName} não foi encontrado.\n");
+            }
+            Console.ReadKey();
+        }
 
         void TeamGet()
         {
@@ -98,21 +99,22 @@ internal class Program
             Console.ReadKey();
         }
 
-        //void PlayerGet()
-        //{
-        //    Console.Clear();
-        //    Console.WriteLine("### Exibir detalhes do Time de Futebol ###");
-        //    Console.WriteLine("\nDigite o time cujos jogadores deseja consultar: ");
-        //    string TeamName = Console.ReadLine();
-        //    if (TeamList.ContainsKey(TeamName))
-        //    {
-        //        Team team = TeamList[TeamName];
-        //        team.ShowPlayers();
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"\nO time {TeamName} não foi encontrado.\n");
-        //    }
-        //}
+        void PlayerGet()
+        {
+            Console.Clear();
+            Console.WriteLine("### Exibir detalhes do Time de Futebol ###");
+            Console.WriteLine("\nDigite o time cujos jogadores deseja consultar: ");
+            string teamName = Console.ReadLine();
+            var targetTeam = TeamDAL.ReadBy(a => a.Name.Equals(teamName));
+            if (targetTeam is not null)
+            {
+                targetTeam.ShowPlayers();
+            }
+            else
+            {
+                Console.WriteLine($"\nO time {teamName} não foi encontrado.\n");
+            }
+            Console.ReadKey();
+        }
     }
 }

@@ -23,7 +23,9 @@ namespace CampeonatoFut_Console
             return $@"{Id} - Time: {Name}";
         }
 
-        private List<Player> Players = new List<Player>();
+        public virtual ICollection<Player> Players { get; set; } = new List<Player>();
+
+        //private List<Player> Players = new List<Player>();
         public void AddPlayer(Player player)
         {
             Players.Add(player);

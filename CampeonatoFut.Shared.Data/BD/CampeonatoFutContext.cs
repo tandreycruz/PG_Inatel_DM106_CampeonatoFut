@@ -14,11 +14,11 @@ namespace CampeonatoFut.Shared.Data.BD
         public DbSet<Team> Team { get; set; }
         public DbSet<Player> Player { get; set; }
 
-        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CampeonatoFut_BD;Integrated Security=True;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CampeonatoFut_BD_V1;Integrated Security=True;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString).UseLazyLoadingProxies();
         }
     }
 }

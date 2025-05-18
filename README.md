@@ -2,11 +2,15 @@
 ## DM106 - Desenvolvimento de Web Services com Segurança sob a Plataforma .NET
 ### Descrição:
 Repositório utilizado para guardar arquivos dos exercícios práticos, referentes ao projeto CampeonatoFut, produzidos na disciplina Desenvolvimento de Web Services com Segurança sob a Plataforma .NET.
-### 📂 Arquivos:
+### Exercício 3:
 
-- [Exercício 1](https://github.com/tandreycruz/PG_Inatel_DM106_CampeonatoFut/tree/exercicio1)
+  Os arquivos referentes ao Exercício 3, parte integrante da avaliação da disciplina DM106 estão nesta branch 'exercicio3'.
 
-  Os arquivos referentes ao Exercício 1, parte integrante da avaliação da disciplina DM106 estão na branch 'exercicio1'.
+  As atividades propostas neste exercício são:
+  
+    - Completar a API com EndPoints utilizando DI
+    - Configurar a documentação Swagger
+    - Configurar DTOs para as requests e responses da API
 
 
 ### Autor:

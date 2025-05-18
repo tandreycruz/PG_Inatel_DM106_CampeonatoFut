@@ -12,6 +12,7 @@ Repositório utilizado para guardar arquivos dos exercícios práticos, referent
     - Configurar a documentação Swagger
     - Configurar DTOs para as requests e responses da API
 
+  Coleção do Postman: [Exercicio3-DM106](https://documenter.getpostman.com/view/44606198/2sB2qXj2sB)
 
 ### Autor:
 **Taíbe Cruz**

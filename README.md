@@ -16,6 +16,10 @@ Repositório utilizado para guardar arquivos dos exercícios práticos, referent
 
   Os arquivos referentes ao Exercício 3, parte integrante da avaliação da disciplina DM106 estão na branch 'exercicio3'.
 
+- [Exercício 4](https://github.com/tandreycruz/PG_Inatel_DM106_CampeonatoFut/tree/exercicio4)
+
+  Os arquivos referentes ao Exercício 4, parte integrante da avaliação da disciplina DM106 estão na branch 'exercicio4'.
+
 
 ### Autor:
 **Taíbe Cruz**

@@ -7,8 +7,10 @@ internal class Program
     private static void Main(string[] args)
     {
         //var TeamDAL = new TeamDAL();
-        var TeamDAL = new DAL<Team>();
         //var PlayerDAL = new PlayerDAL();
+
+        using var context = new CampeonatoFutContext();
+        var TeamDAL = new DAL<Team>(context);
 
         bool exit = false;
 

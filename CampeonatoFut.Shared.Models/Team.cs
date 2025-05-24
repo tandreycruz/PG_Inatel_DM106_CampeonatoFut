@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CampeonatoFut.Shared.Models;
 
 namespace CampeonatoFut_Console
 {
@@ -24,6 +25,8 @@ namespace CampeonatoFut_Console
         }
 
         public virtual ICollection<Player> Players { get; set; } = new List<Player>();
+
+        public virtual ICollection<Stadium> Stadiums { get; set; } = new List<Stadium>();
 
         //private List<Player> Players = new List<Player>();
         public void AddPlayer(Player player)

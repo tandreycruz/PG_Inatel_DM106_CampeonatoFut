@@ -10,7 +10,9 @@ namespace CampeonatoFut_API.EndPoints
     {
         public static void AddEndPointsPlayer(this WebApplication app)
         {
-            app.MapGet("/Player", ([FromServices] DAL<Player> dal) =>
+            var groupBuilder = app.MapGroup("Player").RequireAuthorization().WithTags("Player");
+
+            groupBuilder.MapGet("", ([FromServices] DAL<Player> dal) =>
             {
                 var playerList = dal.Read();
                 if (playerList is null)
@@ -22,7 +24,7 @@ namespace CampeonatoFut_API.EndPoints
             }
             );
 
-            app.MapPost("/Player", ([FromServices] DAL<Player> dal, [FromBody] PlayerRequest playerRequest) =>
+            groupBuilder.MapPost("", ([FromServices] DAL<Player> dal, [FromBody] PlayerRequest playerRequest) =>
             {
                 var player = new Player(playerRequest.name);
                 dal.Create(player);
@@ -30,7 +32,7 @@ namespace CampeonatoFut_API.EndPoints
             }
             );
 
-            app.MapPut("/Player", ([FromServices] DAL<Player> dal, [FromBody] PlayerEditRequest playerEditRequest) =>
+            groupBuilder.MapPut("", ([FromServices] DAL<Player> dal, [FromBody] PlayerEditRequest playerEditRequest) =>
             {
                 var playerToEdit = dal.ReadBy(a => a.Id == playerEditRequest.id);
                 if (playerToEdit is null)
@@ -43,7 +45,7 @@ namespace CampeonatoFut_API.EndPoints
             }
             );
 
-            app.MapDelete("/Player/{id}", ([FromServices] DAL<Player> dal, int id) =>
+            groupBuilder.MapDelete("/{id}", ([FromServices] DAL<Player> dal, int id) =>
             {
                 var player = dal.ReadBy(a => a.Id == id);
                 if (player is null)
@@ -55,7 +57,7 @@ namespace CampeonatoFut_API.EndPoints
             }
             );
 
-            app.MapGet("/Player{id}", ([FromServices] DAL<Player> dal, int id) =>
+            groupBuilder.MapGet("/{id}", ([FromServices] DAL<Player> dal, int id) =>
             {
                 var player = dal.ReadBy(a => a.Id == id);
                 if (player is null) return Results.NotFound();

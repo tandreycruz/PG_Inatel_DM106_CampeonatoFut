@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CampeonatoFut.Shared.Data.BD
 {
     public class DAL<T> where T : class
     {
         private readonly CampeonatoFutContext context;
-        //public DAL()
-        //{
-            //context = new CampeonatoFutContext();
-        //}
-
+        
         public DAL(CampeonatoFutContext context)
         {
             this.context = context;
@@ -46,5 +44,11 @@ namespace CampeonatoFut.Shared.Data.BD
         {
             return context.Set<T>().FirstOrDefault(predicate);
         }
+
+        public IEnumerable<T> ReadAll(Expression<Func<T, bool>> predicate)
+        {
+            return context.Set<T>().Where(predicate).ToList();
+        }
+
     }
- }
+}

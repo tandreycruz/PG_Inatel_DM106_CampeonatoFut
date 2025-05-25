@@ -95,8 +95,7 @@ namespace CampeonatoFut_API.EndPoints
                 {
                     stadList.Add(stadium);
                 }
-            }
-            //return stadiumList.Select(d => RequestToEntity(d)).ToList();
+            }            
             return stadList;
         }
         private static Stadium RequestToEntity(StadiumRequest stadium)

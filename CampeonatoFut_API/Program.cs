@@ -13,6 +13,7 @@ builder.Services.AddDbContext<CampeonatoFutContext>();
 builder.Services.AddTransient<DAL<Team>>();
 builder.Services.AddTransient<DAL<Player>>();
 builder.Services.AddTransient<DAL<Stadium>>();
+builder.Services.AddTransient<DAL<Uniform>>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityApiEndpoints<AccessUser>().AddEntityFrameworkStores<CampeonatoFutContext>();
@@ -23,6 +24,7 @@ var app = builder.Build();
 
 app.UseAuthorization();
 
+app.MapGet("/", () => Results.Redirect("/swagger"));
 app.MapGroup("auth").MapIdentityApi<AccessUser>().WithTags("Authorization");
 app.MapPost("auth/logout", async ([FromServices] SignInManager<AccessUser> signInManager) =>
 {
@@ -35,6 +37,7 @@ app.MapPost("auth/logout", async ([FromServices] SignInManager<AccessUser> signI
 app.AddEndPointsTeam();
 app.AddEndPointsPlayer();
 app.AddEndPointsStadium();
+app.AddEndPointsUniform();
 
 app.UseSwagger();
 app.UseSwaggerUI();

@@ -17,9 +17,12 @@ namespace CampeonatoFut.Shared.Data.BD
         public DbSet<Team> Team { get; set; }
         public DbSet<Player> Player { get; set; }
         public DbSet<Stadium> Stadium { get; set; }
+        public DbSet<Uniform> Uniform { get; set; }
 
 
-        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CampeonatoFut_BD_V1;Integrated Security=True;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CampeonatoFut_BD_V1;Integrated Security=True;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+
+        private string connectionString = "Server=tcp:campeonatofutserver.database.windows.net,1433;Initial Catalog=CampeonatoFut_BD_V1;Persist Security Info=False;User ID=tandreycruz;Password={YourPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

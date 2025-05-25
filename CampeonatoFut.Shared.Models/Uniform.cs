@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CampeonatoFut_Console;
 
-namespace CampeonatoFut_Console
+namespace CampeonatoFut.Shared.Models
 {
-    public class Player
+    public class Uniform
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }        
+        public string Name { get; set; }
+        
 
         public virtual Team? Team { get; set; }
 
-        public Player(string name)
+        public Uniform(string name)
         {
             Name = name;            
         }
         public override string ToString()
         {
-            return $@"Jogador: {Name}";
+            return $@"Uniforme: {Name}";
         }
     }
 }

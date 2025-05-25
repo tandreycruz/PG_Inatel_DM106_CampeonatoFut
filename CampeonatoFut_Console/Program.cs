@@ -1,14 +1,12 @@
 ﻿using CampeonatoFut.Shared.Data.BD;
+using CampeonatoFut.Shared.Models;
 using CampeonatoFut_Console;
 
 internal class Program
 {
     public static Dictionary<string, Team> TeamList = new();
     private static void Main(string[] args)
-    {
-        //var TeamDAL = new TeamDAL();
-        //var PlayerDAL = new PlayerDAL();
-
+    {        
         using var context = new CampeonatoFutContext();
         var TeamDAL = new DAL<Team>(context);
 
@@ -22,8 +20,10 @@ internal class Program
             Console.WriteLine("##############################################\n");
             Console.WriteLine("Digite 1 para registrar um Time de Futebol");
             Console.WriteLine("Digite 2 para registrar um Jogador de um Time de Futebol");
-            Console.WriteLine("Digite 3 para mostrar todos os Times de Futebol");
-            Console.WriteLine("Digite 4 para mostrar os Jogadores de um Time de Futebol");
+            Console.WriteLine("Digite 3 para registrar um Uniforme de um Time de Futebol");
+            Console.WriteLine("Digite 4 para mostrar todos os Times de Futebol");
+            Console.WriteLine("Digite 5 para mostrar os Jogadores de um Time de Futebol");
+            Console.WriteLine("Digite 6 para mostrar os Uniformes de um Time de Futebol");
             Console.WriteLine("Digite -1 para sair\n");
 
             Console.WriteLine("Informe sua opção:");
@@ -38,10 +38,16 @@ internal class Program
                     PlayerRegistration();
                     break;
                 case 3:
-                    TeamGet();
+                    UniformRegistration();
                     break;
                 case 4:
+                    TeamGet();
+                    break;
+                case 5:
                     PlayerGet();
+                    break;
+                case 6:
+                    UniformGet();
                     break;
                 case -1:
                     Console.Clear();
@@ -90,6 +96,28 @@ internal class Program
             Console.ReadKey();
         }
 
+        void UniformRegistration()
+        {
+            Console.Clear();
+            Console.WriteLine("### Registro de Uniformes ###");
+            Console.WriteLine("\nDigite o time cujo uniforme deseja registrar: ");
+            string teamName = Console.ReadLine();
+            var targetTeam = TeamDAL.ReadBy(a => a.Name.Equals(teamName));
+            if (targetTeam is not null)
+            {
+                Console.WriteLine($"\nInforme o nome do uniforme do {teamName}: ");
+                string name = Console.ReadLine();
+                targetTeam.AddUniform(new Uniform(name));
+                TeamDAL.Update(targetTeam);
+                Console.WriteLine($"\nO uniforme {name} do time {teamName} foi registrado com sucesso!\n");
+            }
+            else
+            {
+                Console.WriteLine($"\nO time {teamName} não foi encontrado.\n");
+            }
+            Console.ReadKey();
+        }
+
         void TeamGet()
         {
             Console.Clear();
@@ -111,6 +139,24 @@ internal class Program
             if (targetTeam is not null)
             {
                 targetTeam.ShowPlayers();
+            }
+            else
+            {
+                Console.WriteLine($"\nO time {teamName} não foi encontrado.\n");
+            }
+            Console.ReadKey();
+        }
+
+        void UniformGet()
+        {
+            Console.Clear();
+            Console.WriteLine("### Exibir detalhes do Time de Futebol ###");
+            Console.WriteLine("\nDigite o time cujos uniformes deseja consultar: ");
+            string teamName = Console.ReadLine();
+            var targetTeam = TeamDAL.ReadBy(a => a.Name.Equals(teamName));
+            if (targetTeam is not null)
+            {
+                targetTeam.ShowUniforms();
             }
             else
             {

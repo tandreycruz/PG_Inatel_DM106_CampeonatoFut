@@ -28,10 +28,16 @@ namespace CampeonatoFut_Console
 
         public virtual ICollection<Stadium> Stadiums { get; set; } = new List<Stadium>();
 
-        //private List<Player> Players = new List<Player>();
+        public virtual ICollection<Uniform> Uniforms { get; set; } = new List<Uniform>();
+                
         public void AddPlayer(Player player)
         {
             Players.Add(player);
+        }
+
+        public void AddUniform(Uniform uniform)
+        {
+            Uniforms.Add(uniform);
         }
 
         public void ShowPlayers()
@@ -47,6 +53,22 @@ namespace CampeonatoFut_Console
             else
             {
                 Console.WriteLine("\nNenhum jogador cadastrado.\n");
+            }
+        }
+
+        public void ShowUniforms()
+        {
+            if (Uniforms.Count > 0)
+            {
+                Console.WriteLine($"\nUniformes do time {Name} ");
+                foreach (var Uniform in Uniforms)
+                {
+                    Console.WriteLine($"Uniforme: {Uniform.Name} ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNenhum uniforme cadastrado.\n");
             }
         }
 

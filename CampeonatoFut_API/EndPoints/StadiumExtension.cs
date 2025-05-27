@@ -44,7 +44,7 @@ namespace CampeonatoFut_API.EndPoints
             }
             );
 
-            // CONSULTAR TIMES A PARTIR DE UM (ID) ESTADIO
+            // NOVA FUNCIONALIDADE: CONSULTAR TIMES ASSOCIADOS AOS ESTADIOS CADASTRADOS
             groupBuilder.MapGet("/Teams", ([FromServices] DAL<Stadium> dal) =>
             {
                 var stadiums = dal.ReadAll(s => true)
@@ -54,7 +54,8 @@ namespace CampeonatoFut_API.EndPoints
                                       Teams = s.Team.Any() ? s.Team.Select(t => EntityToResponse(t)).Cast<object>().ToList() : new List<object> { "Sem time" }
                                   });
                 return Results.Ok(stadiums);
-            });
+            }
+            );
 
 
         }

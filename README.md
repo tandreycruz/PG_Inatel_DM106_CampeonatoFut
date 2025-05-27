@@ -1,5 +1,6 @@
 # Pós-Graduação em Desenvolvimento Mobile e Cloud Computing - Inatel
 ## DM106 - Desenvolvimento de Web Services com Segurança sob a Plataforma .NET
+## Prof. MSc. José Andery Carneiro
 ### Descrição:
 Repositório utilizado para guardar arquivos dos exercícios práticos e Projeto Final, referentes ao projeto CampeonatoFut, produzidos na disciplina Desenvolvimento de Web Services com Segurança sob a Plataforma .NET.<br><br>
 ### 📂 Exercícios Práticos:
